@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvyNails - Prothésiste Ongulaire</title>
+    <style>
+        /* Importation de polices*/
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap');
+
+        /* Palette de couleurs */
+        :root {
+            --bg-beige: #F9F6F0;       /* Beige très clair pour le fond */
+            --rose-poudre: #E6C5C5;    /* Rose pâle élégant */
+            --rose-fonce: #C49799;     /* Rose plus soutenu pour les boutons/accents */
+            --texte-marron: #4A3C38;   /* Marron très foncé pour le texte */
+            --blanc: #FFFFFF;
+        }
+
+        /* Styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-beige);
+            color: var(--texte-marron);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* En-tête */
+        header {
+            background-color: var(--rose-poudre);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Conteneur pour grouper le logo et le texte ensemble */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* Espace entre le logo et le texte */
+            text-decoration: none;
+        }
+
+        .header-logo {
+            width: 40px;  /* Ajuste la taille de ton logo ici */
+            height: 40px;
+            object-fit: contain;
+            border-radius: 50%; /* Optionnel : rend le logo rond si tu le souhaites */
+        }
+
+        .logo {
+            font-size: 28px;
+            font-style: italic;
+            color: var(--texte-marron);
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--texte-marron);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--blanc);
+        }
+
+        /* Section Héro */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(to bottom, var(--rose-poudre), var(--bg-beige));
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            background-color: var(--rose-fonce);
+            color: var(--blanc);
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--texte-marron);
+            transform: translateY(-2px);
+        }
+
+        /* Section Prestations */
+        .services {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--rose-fonce);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--blanc);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--rose-poudre);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Section Galerie / À propos */
+        .about-gallery {
+            background-color: var(--blanc);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .gallery-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-images img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Section Avis Clients */
+        .reviews-section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .review-card {
+            background-color: var(--blanc);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .review-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .stars {
+            color: #f39c12;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .google-review-box {
+            background-color: var(--blanc);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .google-review-box p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Modal pour les Tarifs */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--blanc);
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--texte-marron);
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: var(--rose-fonce);
+        }
+
+        /* Pied de page (Footer) */
+        footer {
+            background-color: var(--texte-marron);
+            color: var(--bg-beige);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        .social-links a {
+            color: var(--rose-poudre);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête -->
+    <header>
+        <a href="#accueil" class="logo-container">
+            <img src="logo.png" alt="Logo EvyNails" class="header-logo">
+            <span class="logo">EvyNails.</span>
+        </a>
+        <nav>
+            <a href="#accueil">Accueil</a>
+            <a href="#prestations">Prestations</a>
+            <a href="#" id="open-tarifs">Tarifs</a>
+            <a href="#avis">Avis</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Section Principale -->
+    <section id="accueil" class="hero">
+        <h1>Sublimez vos mains</h1>
+        <p>Bienvenue chez EvyNails. Votre prothésiste ongulaire passionnée pour des ongles élégants, soignés et sur-mesure.</p>
+        <a href="#contact" class="btn">Prendre rendez-vous</a>
+    </section>
+
+    <!-- Section Prestations -->
+    <section id="prestations" class="services">
+        <h2 class="section-title">Mes Prestations</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Vernis Semi-Permanent</h3>
+                <p>Une pose de couleur longue durée qui renforce vos ongles naturels avec un éclat parfait pendant 3 semaines, sans s'écailler.</p>
+            </div>
+            <div class="service-card">
+                <h3>Gainage</h3>
+                <p>Idéal pour renforcer les ongles naturels un peu mous ou fragiles en appliquant une fine couche de gel constructeur, sans ajouter de longueur.</p>
+            </div>
+            <div class="service-card">
+                <h3>Gel X</h3>
+                <p>Une technique innovante de capsules américaines posées sur toute la longueur pour un résultat ultra-rapide, léger et d'une solidité irréprochable.</p>
+            </div>
+            <div class="service-card">
+                <h3>Demi Capsules</h3>
+                <p>La solution idéale pour allonger vos ongles avec des extensions classiques adaptées à la forme de votre choix, prêtes à être sublimées.</p>
+            </div>
+            <div class="service-card">
+                <h3>Chablon</h3>
+                <p>Une technique professionnelle sans aucune capsule : le gel est sculpté sur un support sur-mesure pour créer une longueur naturelle et parfaitement adaptée à vos doigts.</p>
+            </div>
+            <div class="service-card">
+                <h3>Nail Art & Décorations</h3>
+                <p>Exprimez votre style avec des finitions uniques : babyboomer, french revisitée, strass, effets spéciaux ou dessins faits à main levée.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Galerie -->
+    <section class="about-gallery">
+        <h2 class="section-title">Mon Travail</h2>
+        <p>Découvrez quelques-unes de mes réalisations. Chaque pose est unique et adaptée à vos envies.</p>
+        <div class="gallery-images">
+            <img src="posameric.jpg" alt="Pose d'ongles Américaine">
+            <img src="demcap.jpeg" alt="Demi Capsule">
+            <img src="gain.jpeg" alt="Gainage">
+        </div>
+    </section>
+
+    <!-- Section Avis Clients -->
+    <section id="avis" class="reviews-section">
+        <h2 class="section-title">Avis Clients</h2>
+        <div class="reviews-container">
+            <div class="review-card">
+                <h4>Marie L.</h4>
+                <div class="stars">★★★★★</div>
+                <p>Un travail d'une finesse incroyable ! Mes ongles tiennent super bien, je recommande les yeux fermés.</p>
+            </div>
+            <div class="review-card">
+                <h4>Chloé D.</h4>
+                <div class="stars">★★★★★</div>
+                <p>Trop contente de mon semi-permanent. Super accueil et salon très cosy.</p>
+            </div>
+        </div>
+        <div class="google-review-box">
+            <p>Vous avez aimé votre prestation chez EvyNails ? Laissez-nous votre avis sur Google !</p>
+            <a href="#" target="_blank" class="btn">Laisser un avis sur Google</a>
+        </div>
+    </section>
+
+    <!-- Fenêtre modale pour afficher le flyer des tarifs -->
+    <div id="tarifs-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-tarifs">&times;</span>
+            <h3 style="color: var(--rose-fonce);">Flyer des Tarifs</h3>
+            <img src="flyer.jpg" alt="Flyer Tarifs EvyNails">
+        </div>
+    </div>
+
+    <!-- Pied de page / Contact -->
+    <footer id="contact">
+        <h2>EvyNails</h2>
+        <p>📍 Bruay Sur Escaut et alentours </p>
+        <p>📞 06 68 40 38 27</p>
+        <div class="social-links">
+            <a href="#">Instagram : @evynails</a>
+            <a href="#">Facebook : @evynails</a>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #a0938f;">&copy; 2026 EvyNails. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script>
+        const modal = document.getElementById('tarifs-modal');
+        const openBtn = document.getElementById('open-tarifs');
+        const closeBtn = document.getElementById('close-tarifs');
+
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
